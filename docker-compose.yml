@@ -16,9 +16,13 @@ services:
     image: algolia/supersecretmessage:latest
     container_name: supersecret
     environment:
+    environment:
       VAULT_ADDR: http://vault:8200
-      VAULT_TOKEN: supersecret
-      SUPERSECRETMESSAGE_HTTP_BINDING_ADDRESS: ":8082"
+      VAULT_TOKEN: root
+      SUPERSECRETMESSAGE_HTTP_BINDING_ADDRESS: ":80"
+      SUPERSECRETMESSAGE_HTTPS_BINDING_ADDRESS: ":443"
+      SUPERSECRETMESSAGE_HTTPS_REDIRECT_ENABLED: "true"
+      SUPERSECRETMESSAGE_TLS_AUTO_DOMAIN: secret.acchacoder.com
     ports:
       - "8082:8082"
     depends_on:
